@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUEL CONTROL AI - Home</title>
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Importar Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Estilos del Header */
+    header {
+      background: linear-gradient(90deg, #800020, #ff0040);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      box-shadow: 0px 0px 15px rgba(255, 0, 64, 0.6);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      height: 60px;
+      margin-right: 15px;
+    }
+
+    .header-title {
+      font-size: 36px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* Ícono de Logout con fondo transparente */
+    .logout-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      color: #ff0000;
+      transform: scale(1.2);
+    }
+
+    /* Contenedor de módulos */
+    .module-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+      gap: 30px; /* Espaciado entre módulos */
+      flex-wrap: wrap; /* Permite que los módulos se ajusten en pantallas pequeñas */
+    }
+
+    .module {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      text-decoration: none;
+      color: #ffffff;
+      transition: 0.3s;
+      width: 280px; /* Aumentar el tamaño de la caja */
+    }
+
+    .module:hover {
+      box-shadow: 0px 0px 15px rgba(255, 0, 64, 0.8);
+    }
+
+    .module video {
+      width: 250px; /* Más grande */
+      height: 200px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      object-fit: cover; /* Evita distorsión en los videos */
+    }
+
+    .module p {
+      font-size: 22px; /* Texto más grande */
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="logo.png" alt="Logo" class="logo">
+      <div class="header-title">FUEL CONTROL AI</div>
+    </div>
+
+    <!-- Botón de Logout con fondo transparente -->
+    <button class="logout-btn" onclick="logout()" title="Cerrar Sesión">
+      <i class="fas fa-power-off"></i> <!-- Ícono de apagado de Font Awesome -->
+    </button>
+  </header>
+
+  <main>
+    <h2>Bienvenido al Panel de Control</h2>
+    <div class="module-container">
+      <a href="dashboard.html" class="module">
+        <video src="dashboard.mp4" autoplay loop muted playsinline></video>
+        <p>Dashboard</p>
+      </a>
+      <a href="cargas.html" class="module">
+        <video src="cargas.mp4" autoplay loop muted playsinline></video>
+        <p>Cargas</p>
+      </a>
+      <a href="descargas.html" class="module">
+        <video src="descargas.mp4" autoplay loop muted playsinline></video>
+        <p>Descargas</p>
+      </a>
+      <a href="reportes.html" class="module">
+        <video src="reportes.mp4" autoplay loop muted playsinline></video>
+        <p>Reportes</p>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    function logout() {
+      alert("Cerrando sesión...");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

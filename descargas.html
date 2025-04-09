@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FUEL CONTROL AI</title>
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Librerías -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <!-- Mapbox -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+
+  <!-- FontAwesome (para los iconos) -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Tu JavaScript externo -->
+  <script defer src="descargasapp.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(90deg, #800020, #ff0040);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0px 0px 15px rgba(255, 0, 64, 0.6);
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+    header .logo {
+      height: 60px;
+      margin-right: 15px;
+    }
+
+    .header-title {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    main {
+      display: flex;
+      padding-top: 120px; /* Espacio para evitar que el header lo cubra */
+      align-items: flex-start;
+    }
+
+    .sidebar {
+      width: 260px;
+      position: fixed;
+      left: 0;
+      top: 100px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      height: calc(100vh - 100px);
+      overflow-y: auto;
+      box-shadow: 4px 0px 10px rgba(255, 0, 64, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Estilo para los botones con efecto 3D y mayor margen */
+    .sidebar button {
+      width: 80%;
+      padding: 10px;
+      margin: 10px auto;
+      font-size: 14px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(180deg, #ff0040 0%, #800020 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .sidebar button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .sidebar button:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar input,
+    .sidebar select {
+      width: 80%;
+      padding: 6px;
+      margin: 5px auto;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .table-container {
+      flex: 1;
+      overflow-x: auto;
+      margin-left: 280px;
+      max-height: calc(100vh - 120px);
+      /* Líneas agregadas para evitar empalme */
+      padding: 10px; 
+      box-sizing: border-box;
+    }
+
+    .table-container table thead {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 0, 64, 0.8);
+      z-index: 500;
+    }
+    table {
+      font-family: Arial, sans-serif;
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0px 0px 15px rgba(255, 0, 64, 0.6);
+    }
+    th, td {
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      text-align: center;
+    }
+    th {
+      background: rgba(255, 0, 64, 0.8);
+      color: #ffffff;
+    }
+
+    .map-container {
+      width: 350px;
+      height: 270px;
+    }
+    .localizacion-link {
+      color: #eff234;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Bloque para mostrar la suma de litros */
+    .litros-box {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #ff0040;
+      border-radius: 10px;
+      padding: 15px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .litros-box h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #ff0040;
+    }
+    .litros-box .litros-valor {
+      font-size: 36px;
+      font-weight: bold;
+      color: #ff0040;
+    }
+
+    /* Mapa Global (minimapa): se aumenta su tamaño */
+    .mapa-global {
+      width: 100%;
+      height: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid #ff0040;
+    }
+
+    /* Ejemplo: si quieres que (6), (7), (8) estén en negrita y más grandes */
+    table thead th:nth-child(6),
+    table thead th:nth-child(7),
+    table thead th:nth-child(8),
+    table tbody td:nth-child(6),
+    table tbody td:nth-child(7),
+    table tbody td:nth-child(8) {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <img src="logo.png" alt="Logo" class="logo">
+      <div class="header-title">FUEL CONTROL AI</div>
+    </div>
+    <div class="nav-icons">
+      <a href="home.html"><i class="fas fa-home"></i></a>
+      <a href="index.html"><i class="fas fa-power-off"></i></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="sidebar">
+      <h2>Descargas de Combustible</h2>
+
+      <!-- Botones de filtro -->
+      <button onclick="actualizarDatos()">Actualizar Datos</button>
+      <button onclick="filtrarPor('hoy')">Hoy</button>
+      <button onclick="filtrarPor('semana')">Semana</button>
+      <button onclick="filtrarPor('mes')">Mes</button>
+
+      <label>Fecha Inicial:</label>
+      <input type="date" id="startDate">
+
+      <label>Fecha Final:</label>
+      <input type="date" id="endDate">
+
+      <button onclick="filtrarPorRango()">Filtrar Rango</button>
+
+      <label>Filtrar por Unidad:</label>
+      <select id="unidadSelect" onchange="filtrarPorUnidad()">
+        <option value="">Todas</option>
+      </select>
+
+      <!-- Caja de litros descargados -->
+      <div class="litros-box">
+        <h3>Litros Descargados</h3>
+        <div class="litros-valor" id="litrosDescargados">0 L</div>
+      </div>
+
+      <!-- Mapa Global (minimapa) -->
+      <div id="mapaGlobal" class="mapa-global"></div>
+
+    </div><!-- Fin sidebar -->
+
+    <!-- Tabla de datos -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Folio</th>
+            <th>Fecha</th>
+            <th>Mes</th>
+            <th>SD</th>
+            <th>Unidad</th>
+            <th>Litraje Inicial</th>
+            <th><i class="fa-solid fa-gas-pump" style="color:#ff0040;"></i> Litros Descargados</th>
+            <th>Litraje Final</th>
+            <th>Localización</th>
+            <th>Mapa</th>
+          </tr>
+        </thead>
+        <tbody id="eventos-body"></tbody>
+      </table>
+    </div>
+  </main>
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/67f5a37b538de91914fcf885/1iobod688';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>
