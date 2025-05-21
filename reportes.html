@@ -1,0 +1,252 @@
+<!-- Fuel Control Total Report -->
+<section id="fuel-control-total">
+  <h1>REPORTES</h1>
+
+  <!-- Filtros -->
+  <div class="search-container">
+    <!-- Lista desplegable de unidades -->
+    <select id="unit-select">
+      <option value="">-- Todas las unidades --</option>
+      <option value="G772 UNIDAD 001 234DT4">G772 UNIDAD 001 234DT4</option>
+      <option value="G772 UNIDAD 002 888DT4">G772 UNIDAD 002 888DT4</option>
+      <option value="G772 UNIDAD 003 976DT4">G772 UNIDAD 003 976DT4</option>
+      <option value="G772 UNIDAD 013 238DT5">G772 UNIDAD 013 238DT5</option>
+      <option value="G772 UNIDAD 018 622DT4">G772 UNIDAD 018 622DT4</option>
+      <option value="G772 UNIDAD 032 796DT4">G772 UNIDAD 032 796DT4</option>
+      <option value="G772 UNIDAD 040 075DT5">G772 UNIDAD 040 075DT5</option>
+      <!-- … más unidades … -->
+    </select>
+
+    <!-- Fecha inicial -->
+    <label class="date-label">
+      Fecha Inicial:
+      <input type="date" id="date-start" />
+    </label>
+
+    <!-- Fecha final -->
+    <label class="date-label">
+      Fecha Final:
+      <input type="date" id="date-end" />
+    </label>
+
+    <!-- Botón de rango -->
+    <button id="date-btn" title="Filtrar rango">Filtrar Rango</button>
+
+    <!-- Botón para limpiar filtros -->
+    <button id="clear-btn" title="Limpiar filtros">Limpiar</button>
+  </div>
+
+  <!-- Botones de selección de reporte -->
+  <div class="report-buttons">
+    <button class="report-btn" data-target="consumo-total">Consumo Total</button>
+    <button class="report-btn" data-target="consumo-ralenti">Consumo Ralentí</button>
+    <button class="report-btn" data-target="llenados-combustible">Llenados de Combustible</button>
+    <button class="report-btn" data-target="descargas-combustible">Descargas de Combustible</button>
+  </div>
+
+  <!-- Consumo Total -->
+  <div class="report-section" id="consumo-total">
+    <h3>Consumo Total</h3>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Unidad</th>
+          <th>Kilometraje Total</th>
+          <th>Litros Consumidos</th>
+          <th>Consumo Km/Litro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>G772 UNIDAD 001 234DT4</td><td>0 km</td><td>0 l</td><td>0.00 km/l</td></tr>
+        <tr><td>G772 UNIDAD 002 888DT4</td><td>132 km</td><td>67 l</td><td>2.00 km/l</td></tr>
+        <tr><td>G772 UNIDAD 003 976DT4</td><td>10 km</td><td>0 l</td><td>0.00 km/l</td></tr>
+        <!-- … más filas … -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Consumo Ralentí -->
+  <div class="report-section" id="consumo-ralenti">
+    <h3>Consumo Ralentí</h3>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Unidad</th>
+          <th>Tiempo en Ralentí</th>
+          <th>Consumo</th>
+          <th>Promedio</th>
+          <th>Hora</th>
+          <th>Localización</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>G772 UNIDAD 001 234DT4</td><td>0:00:00</td><td>0.00 l</td><td>0.00 l/h</td><td>—</td><td>—</td></tr>
+        <tr><td>G772 UNIDAD 002 888DT4</td><td>1:11:19</td><td>2.01 l</td><td>1.69 l/h</td><td>05:39:14</td><td>Calle Tulipán, Colonia Miramar, Altamira, Tamaulipas 89604</td></tr>
+        <tr><td>G772 UNIDAD 003 976DT4</td><td>0:53:12</td><td>0.00 l</td><td>0.00 l/h</td><td>09:48:38</td><td>Calle Juan Báez Guerra, La Presita, Victoria, Tamaulipas 87019</td></tr>
+        <!-- … más filas … -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Llenados de Combustible -->
+  <div class="report-section" id="llenados-combustible">
+    <h3>Llenados de Combustible</h3>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Agrupación</th>
+          <th>Fecha y Hora</th>
+          <th>Localización</th>
+          <th>Litros Cargados</th>
+          <th>Cargas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>G772 UNIDAD 013 238DT5</td><td>2025-05-20 10:05:43</td><td>Avenida San Rafael</td><td>479 l</td><td>1</td></tr>
+        <tr><td>G772 UNIDAD 001 234DT4</td><td>—</td><td>—</td><td>—</td><td>0</td></tr>
+        <!-- … más filas … -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Descargas de Combustible -->
+  <div class="report-section" id="descargas-combustible">
+    <h3>Descargas de Combustible</h3>
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Agrupación</th>
+          <th>Fecha y Hora</th>
+          <th>Localización</th>
+          <th>Litros Descargados</th>
+          <th>Descargas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>G772 UNIDAD 018 622DT4</td><td>2025-05-20 00:08:33</td><td>Avenida General Lázaro Cárdenas, La Presita, Victoria, Tamaulipas 87019</td><td>27 l</td><td>1</td></tr>
+        <tr><td>G772 UNIDAD 032 796DT4</td><td>2025-05-20 11:18:19</td><td>Calle Sector 2, Garza Cantú, San Nicolás De Los Garza, Nuevo León 66480</td><td>35 l</td><td>1</td></tr>
+        <tr><td>G772 UNIDAD 040 075DT5</td><td>2025-05-20 06:09:31</td><td>Carretera A Aeropuerto Internacional De Tampico, Colonia Miramar, Altamira, Tamaulipas 89604</td><td>36 l</td><td>1</td></tr>
+        <!-- … más filas … -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Estilos CSS básicos -->
+<style>
+  #fuel-control-total{font-family:Arial,sans-serif;margin:20px;}
+  #fuel-control-total h1{font-size:24px;margin-bottom:10px;}
+
+  .search-container,.report-buttons{display:inline-flex;align-items:center;}
+  .search-container{gap:8px;margin-right:12px;margin-bottom:0;}
+
+  #unit-select,#date-start,#date-end,
+  #date-btn,#clear-btn,.report-btn{
+    height:36px;display:inline-flex;align-items:center;justify-content:center;
+  }
+  #unit-select{min-width:220px;padding:6px 10px;font-size:14px;border:1px solid #ccc;border-radius:4px;}
+  #date-start,#date-end{width:150px;padding:6px 10px;font-size:14px;border:1px solid #ccc;border-radius:4px;}
+  #date-btn,#clear-btn{min-width:160px;padding:6px 12px;font-size:14px;border:1px solid #6c757d;background:#6c757d;color:#fff;cursor:pointer;border-radius:4px;}
+  #date-btn:hover,#clear-btn:hover{background:#5a6268;}
+
+  .date-label{display:flex;flex-direction:column;font-size:12px;font-weight:bold;}
+
+  .report-buttons{margin:15px 0 15px 0;gap:8px;}
+  .report-btn{min-width:160px;padding:6px 14px;border:1px solid #007bff;background:#007bff;color:#fff;cursor:pointer;border-radius:4px;font-size:14px;transition:background .2s;}
+  .report-btn:hover{background:#0056b3;}
+  .report-btn.active{background:#28a745;border-color:#28a745;}
+
+  .report-section{display:none;margin-top:20px;}
+  .report-section.active{display:block;}
+
+  .report-table{width:100%;border-collapse:collapse;}
+  .report-table th,.report-table td{border:1px solid #ccc;padding:8px 12px;text-align:left;vertical-align:top;}
+  .report-table th{background:#f5f5f5;}
+  .report-table tbody tr:nth-child(even){background:#fafafa;}
+
+  /* ———  AJUSTES DE ALINEACIÓN ——— */
+  .search-container{align-items:flex-end;}    /* controla alineación vertical */
+  .date-label{gap:2px;justify-content:flex-end;} /* reduce altura del label */
+</style>
+
+<!-- Script -->
+<script>
+  // sección inicial
+  document.getElementById('consumo-total').classList.add('active');
+  document.querySelector('.report-btn[data-target="consumo-total"]').classList.add('active');
+
+  // refrescar opciones del select según la tabla visible
+  function refreshUnitOptions(){
+    const select=document.getElementById('unit-select');
+    const active=document.querySelector('.report-section.active');
+    if(!active) return;
+    const unidades=new Set();
+    active.querySelectorAll('tbody tr').forEach(r=>{
+      const u=r.cells[0].textContent.trim();
+      if(u) unidades.add(u);
+    });
+    const current=select.value;
+    select.innerHTML='<option value="">-- Todas las unidades --</option>';
+    [...unidades].sort().forEach(u=>{
+      const opt=document.createElement('option');
+      opt.value=u; opt.textContent=u;
+      if(u.toLowerCase()===current.toLowerCase()) opt.selected=true;
+      select.appendChild(opt);
+    });
+  }
+
+  // cambio de reporte
+  document.querySelectorAll('.report-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.report-section').forEach(s=>s.classList.remove('active'));
+      document.querySelectorAll('.report-btn').forEach(b=>b.classList.remove('active'));
+      document.getElementById(btn.dataset.target).classList.add('active');
+      btn.classList.add('active');
+      refreshUnitOptions();
+      filtrarFilas();
+    });
+  });
+
+  // filtros
+  document.getElementById('unit-select').addEventListener('change',filtrarFilas);
+  document.getElementById('date-btn').addEventListener('click',filtrarFilas);
+  document.getElementById('clear-btn').addEventListener('click',()=>{
+    document.getElementById('unit-select').value='';
+    document.getElementById('date-start').value='';
+    document.getElementById('date-end').value='';
+    refreshUnitOptions();
+    filtrarFilas();
+  });
+
+  function filtrarFilas(){
+    const unidadSel=document.getElementById('unit-select').value.toLowerCase();
+    const s=document.getElementById('date-start').value;
+    const e=document.getElementById('date-end').value;
+    const start=s?new Date(s+'T00:00:00'):null;
+    const end=e?new Date(e+'T23:59:59'):null;
+
+    const active=document.querySelector('.report-section.active'); if(!active)return;
+    let fechaIdx=-1;
+    active.querySelectorAll('thead th').forEach((th,i)=>{
+      if(th.textContent.toLowerCase().includes('fecha')) fechaIdx=i;
+    });
+
+    active.querySelectorAll('tbody tr').forEach(row=>{
+      const unidad=row.cells[0].textContent.toLowerCase();
+      const okUnidad=!unidadSel||unidad===unidadSel;
+      let okFecha=true;
+      if(fechaIdx!==-1&&(start||end)){
+        const txt=row.cells[fechaIdx].textContent.trim();
+        const f=txt?new Date(txt.replace(' ','T')):null;
+        if(f){
+          if(start&&f<start) okFecha=false;
+          if(end&&f>end) okFecha=false;
+        }
+      }
+      row.style.display=(okUnidad&&okFecha)?'':'none';
+    });
+  }
+
+  refreshUnitOptions();
+  filtrarFilas();
+</script>
